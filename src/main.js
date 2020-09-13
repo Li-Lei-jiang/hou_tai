@@ -12,12 +12,10 @@ import dayjs from 'dayjs'
 
 
 
-
 Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.prototype.$dayjs = dayjs
 Vue.prototype.$api = api
-
 
 
 
