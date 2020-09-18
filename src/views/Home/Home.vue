@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       xAdata: [],
-      tarr:[],
+      tarr: [],
     };
   },
   components: {},
@@ -40,18 +40,15 @@ export default {
       // 绘制图表
       myChart.setOption({
         // title: { text: '在Vue中使用echarts' },
+        legend:{},
         tooltip: {},
         xAxis: {
           data: this.xAdata,
         },
-        yAxis: {},
-        series: [
-          {
-            name: "销量",
-            type: "line",
-            data: [5, 20, 36, 10, 10, 20],
-          },
-        ],
+        yAxis: {
+          type: 'value'
+        },
+        series: this.tarr,
       });
     },
     gethomeLineChat() {
@@ -60,17 +57,24 @@ export default {
         .then((res) => {
           if (res.code == 0) {
             let d = res.data;
-            let actual = [],
-              expected = [];
-              this.tarr = [];
+            let obj = {
+              type: "line",
+              data: [],
+              name:'actual'
+            };
+            let obj1 = {
+              type: "line",
+              data: [],
+               name:'expected'
+            };
+            this.tarr = [];
             d.filter((item) => {
               this.xAdata.push(item.date);
-              actual.push(item.actual);
-              expected.push(item.expected);
+              obj.data.push(item.actual);
+              obj1.data.push(item.expected);
             });
-            this.tarr.push(actual, expected,{type:'line'});
+            this.tarr.push(obj, obj1);
             console.log(this.tarr);
-
             this.showLine();
           } else {
             this.$message.error("获取失败");
