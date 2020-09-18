@@ -30,10 +30,12 @@ export default {
     subject
   },
   created() {
-    // if (this.user) {
-    //   this.user = this.getUser.userData;
-    // }
-    // this.getTime();
+    if (this.user) {
+      this.user = this.getUser.userData;
+    }else{
+      // this.$router.push('/login')
+    }
+    this.getTime();
   },
   methods: {
     getTime() {
