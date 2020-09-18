@@ -8,6 +8,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "nprogress/nprogress.css";
 import dayjs from 'dayjs'
+// 引入echarts
+import echarts from 'echarts'
+
 
 
 
@@ -16,7 +19,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 Vue.prototype.$dayjs = dayjs
 Vue.prototype.$api = api
-
+Vue.prototype.$echarts = echarts
 
 
 

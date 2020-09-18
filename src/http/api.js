@@ -19,5 +19,8 @@ export default {
             username,
             password,
         })
-    }
+    },
+    gethomeChat() {
+        return service.req(`/homeChat`)
+    },
 }

@@ -117,8 +117,9 @@ export default {
 }
 
 .el-main {
-
+  background: #F0F2F5;
   color: #333;
+  height: 100vh;
 
 }
 
