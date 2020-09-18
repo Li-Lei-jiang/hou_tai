@@ -11,6 +11,7 @@
         </div>
       </div>
     </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -26,10 +27,10 @@ export default {
   },
   components: {},
   created() {
-    if (this.user) {
-      this.user = this.getUser.userData;
-    }
-    this.getTime();
+    // if (this.user) {
+    //   this.user = this.getUser.userData;
+    // }
+    // this.getTime();
   },
   methods: {
     getTime() {
@@ -77,5 +78,5 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import "./heads";
+@import '../common/common';
 </style>
