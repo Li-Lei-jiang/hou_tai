@@ -5,11 +5,11 @@ import common from '../components/common/common.vue'
 Vue.use(VueRouter)
 
 const routes = [
-    // //c重定向
-    // {
-    //     path: '/',
-    //     redirect: "/Home"
-    // },
+    //c重定向
+    {
+        path: '/',
+        redirect: "/Home"
+    },
     //登录
     {
         path: '/login',
@@ -32,24 +32,12 @@ const routes = [
             path: '',
             name: 'home',
             component: Home
-        }]
+        }, ]
 
     },
-    //index展示
-    {
-        path: '/index',
-        component: Home,
-        children: [{
-            path: '',
-            name: 'index',
-            component: () =>
-                import ('../views/Home/index/index.vue')
-        }]
-    },
-    //已发布
     {
         path: '/updet',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'updet',
@@ -60,7 +48,7 @@ const routes = [
     //统计
     {
         path: '/statistics',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'statistics',
@@ -71,7 +59,7 @@ const routes = [
     //发表文章
     {
         path: '/publish',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'publish',
@@ -82,7 +70,7 @@ const routes = [
     //标签页
     {
         path: '/tabpage',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'tabpage',
@@ -93,7 +81,7 @@ const routes = [
     //导出
     {
         path: '/export',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'export',
@@ -104,7 +92,7 @@ const routes = [
     //图片上传
     {
         path: '/upload',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'upload',
@@ -115,7 +103,7 @@ const routes = [
     //退出系统
     {
         path: '/signOut',
-        component: Home,
+        component: common,
         children: [{
             path: '',
             name: 'signOut',

@@ -10,12 +10,13 @@
           <div>{{timeText}},亲爱的&nbsp;{{user.username}}&nbsp;,上次登陆时间&nbsp;:&nbsp;{{user.date}}</div>
         </div>
       </div>
+     <subject></subject>
     </div>
-    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import subject from '../subject/subject'
 export default {
   data() {
     return {
@@ -25,7 +26,9 @@ export default {
       timeHour: "", //小时
     };
   },
-  components: {},
+  components: {
+    subject
+  },
   created() {
     // if (this.user) {
     //   this.user = this.getUser.userData;
@@ -37,10 +40,10 @@ export default {
       setInterval(() => {
         this.currentTime = new Date().toLocaleString();
       }, 1000);
-      this. getHour()
+      this.getHour();
     },
     getHour() {
-       let time = new Date().toLocaleString();
+      let time = new Date().toLocaleString();
       // setInterval(() => {
       //   let time = new Date().toLocaleString();
       //   this.timeText = time.substr(10, 2);
@@ -54,18 +57,27 @@ export default {
       //   - 如果下午2-6点，就提示下午好
       //   - 如果晚上6-12点，就提示晚上好
       //   - 如果凌晨12点-凌晨6点，就提示该睡觉了
-      if(this.timeText=='上午'&&this.timeHour<12){
-        this.timeText = '早上好'
-      }else if(this.timeText=='上午'&&this.timeHour<3){
-        this.timeText = '中午好'
-      }else if(this.timeText=='下午'&&this.timeHour<6&&this.timeHour>2){
-         this.timeText = '下午好'
-      }else if (this.timeText=='下午'&&this.timeHour<12&&this.timeHour>6){
-        this.timeText = '晚上好'
-      }else {
-        this.timeText = '该睡觉觉了'
+      if (this.timeText == "上午" && this.timeHour < 12) {
+        this.timeText = "早上好";
+      } else if (this.timeText == "上午" && this.timeHour < 3) {
+        this.timeText = "中午好";
+      } else if (
+        this.timeText == "下午" &&
+        this.timeHour < 6 &&
+        this.timeHour > 2
+      ) {
+        this.timeText = "下午好";
+      } else if (
+        this.timeText == "下午" &&
+        this.timeHour < 12 &&
+        this.timeHour > 6
+      ) {
+        this.timeText = "晚上好";
+      } else {
+        this.timeText = "该睡觉觉了";
       }
     },
+    
   },
   mounted() {},
   watch: {},
@@ -78,5 +90,6 @@ export default {
 </script>
 
 <style scoped lang='scss'>
-@import '../common/common';
+@import "../common/common";
+
 </style>
