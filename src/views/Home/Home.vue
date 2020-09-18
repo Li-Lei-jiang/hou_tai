@@ -23,63 +23,65 @@
 export default {
   data() {
     return {
-      xAdata:[],
-
+      xAdata: [],
+      tarr:[],
     };
   },
   components: {},
   created() {
-   this.gethomeLineChat()
+    this.gethomeLineChat();
   },
   methods: {
     showLine() {
-      
       // 基于准备好的dom，初始化echarts实例
       var myChart = this.$echarts.init(document.getElementById("main"));
 
       // 指定图表的配置项和数据
       // 绘制图表
       myChart.setOption({
-            // title: { text: '在Vue中使用echarts' },
-            tooltip: {},
-            xAxis: {
-                data:  this.xAdata
-            },
-            yAxis: {},
-            series: [{
-                name: '销量',
-                type: 'line',
-                data: [5, 20, 36, 10, 10, 20]
-            }]
+        // title: { text: '在Vue中使用echarts' },
+        tooltip: {},
+        xAxis: {
+          data: this.xAdata,
+        },
+        yAxis: {},
+        series: [
+          {
+            name: "销量",
+            type: "line",
+            data: [5, 20, 36, 10, 10, 20],
+          },
+        ],
+      });
+    },
+    gethomeLineChat() {
+      this.$api
+        .gethomeChat()
+        .then((res) => {
+          if (res.code == 0) {
+            let d = res.data;
+            let actual = [],
+              expected = [];
+              this.tarr = [];
+            d.filter((item) => {
+              this.xAdata.push(item.date);
+              actual.push(item.actual);
+              expected.push(item.expected);
+            });
+            this.tarr.push(actual, expected,{type:'line'});
+            console.log(this.tarr);
+
+            this.showLine();
+          } else {
+            this.$message.error("获取失败");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
         });
     },
-    gethomeLineChat(){
-      this.$api.gethomeChat().then(res=>{
-        if(res.code ==0){
-          let d = res.data;
-          let actualData = [];
-          let expectedData = [];
-          d.filter(item=>{
-            
-            this.xAdata.push(item.date);
-            expectedData.push(item.expected);
-            actualData.push(item.actual);
-            // console.log(item);
-          })
-           console.log(expectedData,actualData);
-        this.showLine();
-        }else{
-          this.$message.error('获取失败')
-        }
-       
-      }).catch(err=>{
-        console.log(err);
-      })
-    },
   },
-  mounted() {
-   
-   },
+  mounted() {},
   watch: {},
   computed: {},
 };
