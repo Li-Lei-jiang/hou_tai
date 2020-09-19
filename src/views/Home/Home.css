@@ -15,6 +15,7 @@
     height: 100px;
     background: #ffffff;
     box-shadow: -1px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
 }
 
 .itembox .minibox {
@@ -45,3 +46,63 @@
 }
 
 .rigtext div:nth-child(2) {}
+
+
+/*  */
+
+#main {
+    width: 100%;
+    height: 400px;
+    margin-top: 50px;
+    background: #FFF;
+    box-shadow: -3px 5px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.chartsShow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.chartsShow .itemshow {
+    width: 32.8%;
+    border-radius: 5px;
+    height: 450px;
+    background: #FFF;
+    box-shadow: -1px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+#radar {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* pie */
+
+#pie {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* 底部表格 */
+
+.endbox {
+    margin-top: 15px;
+    box-shadow: -1px 4px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.endbox .left {
+    width: 64%;
+    background: #ffffff;
+}
+
+.endbox .rig {
+    width: 35%;
+    background: #ffffff;
+}

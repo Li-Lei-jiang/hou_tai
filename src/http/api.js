@@ -20,7 +20,26 @@ export default {
             password,
         })
     },
+    // 获取折线图
     gethomeChat() {
         return service.req(`/homeChat`)
+    },
+    //获取雷达图
+    getRadarChat() {
+        return service.req(`/radarChat`)
+    },
+    //获取饼图
+    getRingChat() {
+        return service.req(`/ringChat`)
+    },
+    //获取柱状图
+    getHomeData() {
+        return service.req(`/homeData`)
+    },
+    getOrderData() {
+        return service.req(`/orderData`)
+    },
+    getProgress() {
+        return service.req(`/progress`)
     },
 }
