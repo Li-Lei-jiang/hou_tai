@@ -36,15 +36,28 @@
           <el-table-column prop="status" label="Status">
             <template slot-scope="scope">
               <el-button
+                :style="scope.row.status===0? 'el-button--danger':'el-button--success'"
                 size="mini"
-                :type="tableData.status=='0'? 'pending':'success'"
+                :type="scope.row.status===0? 'danger':'success'"
                 @click="handleDelete(scope.$index, scope.row)"
-              >Delete</el-button>
+              >{{scope.row.status===0? 'pending':'success'}}</el-button>
             </template>
           </el-table-column>
         </el-table>
       </div>
-      <div class="rig"></div>
+      <div class="rig">
+        <div class="rig_bg">
+          <img src="../../imgas/shouyee.png" alt />
+        </div>
+        <div class="rig_progress">
+          <div v-for="(item,index) in progress" :key="index" style="    height: 40px;
+    line-height: 25px;">
+            <div style="display: inline-block;">{{item.name}}</div>
+            <el-progress :percentage="item.progress" v-if="index === 1" status="success"></el-progress>
+            <el-progress :percentage="item.progress" v-else></el-progress>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -59,6 +72,7 @@ export default {
       radarname: [],
       indicator: [], //饼图展示区域
       tableData: [], //订单
+      progress: [], //进度条
     };
   },
   components: {},
@@ -261,20 +275,44 @@ export default {
         .then((res) => {
           if (res.code == 0) {
             let d = res.data;
-            d.filter(item=>{
-              let pr= '￥'+ item.price;
-              d.price = pr;
-            })
+            d.filter((item) => {
+              let pr = "￥" + item.price;
+              item.price = pr;
+            });
             this.tableData = d;
           }
-          console.log(res);
+          this.getProgress();
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err);
         });
     },
+    //获取进度条
+    getProgress() {
+      this.$api
+        .getProgress()
+        .then((res) => {
+          if (res.code == 0) {
+            let d = res.data;
+            d.filter((item) => {
+              let cot = item.progress * 100;
+              item.progress = cot;
+            });
+            this.progress = d;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    //获取表格选中项
     handleDelete(index, row) {
       console.log(index, row);
+    },
+    //控制进度条
+    format(percentage) {
+      return percentage === 100 ? "满" : `${percentage}%`;
     },
   },
   mounted() {},
@@ -293,5 +331,21 @@ export default {
 .el-table td,
 .el-table th.is-leaf {
   text-align: center;
+}
+.el-button--success {
+  color: #67c23a !important;
+  background-color: #f0f9eb !important;
+  border-color: #f0f9eb !important;
+}
+
+.el-button--danger {
+  background: #fef0f0 !important;
+  background-color: #fef0f0 !important;
+  color: #f8956c !important;
+  border: 0 !important;
+}
+.el-table {
+  width: 97%;
+  margin: 0 auto;
 }
 </style>

@@ -36,9 +36,11 @@ export default {
     getHomeData() {
         return service.req(`/homeData`)
     },
+    //订单
     getOrderData() {
         return service.req(`/orderData`)
     },
+    //进度条
     getProgress() {
         return service.req(`/progress`)
     },
