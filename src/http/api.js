@@ -44,4 +44,8 @@ export default {
     getProgress() {
         return service.req(`/progress`)
     },
+    //获取所有文章
+    getallArticle() {
+        return service.req(`/article/allArticle`)
+    },
 }

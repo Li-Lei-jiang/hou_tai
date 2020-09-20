@@ -1,0 +1,15 @@
+.publishwarp {}
+
+.header {
+    height: 50px;
+    line-height: 50px;
+    background: #59A586;
+    position: relative;
+    /* text-align: center; */
+}
+
+.pubbut {
+    position: absolute;
+    right: 50px;
+    top: 0;
+}

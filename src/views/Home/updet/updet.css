@@ -1,0 +1,16 @@
+.updetwarp {
+    position: relative;
+    height: 100vh;
+}
+
+.uptab {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.upbut {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%);
+}
