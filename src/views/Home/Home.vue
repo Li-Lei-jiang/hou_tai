@@ -310,10 +310,7 @@ export default {
     handleDelete(index, row) {
       console.log(index, row);
     },
-    //控制进度条
-    format(percentage) {
-      return percentage === 100 ? "满" : `${percentage}%`;
-    },
+
   },
   mounted() {},
   watch: {},
