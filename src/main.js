@@ -8,6 +8,9 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "nprogress/nprogress.css";
 import dayjs from 'dayjs'
+
+import mavonEditor from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 // 引入echarts
 import echarts from 'echarts'
 
@@ -20,7 +23,7 @@ Vue.use(ElementUI);
 Vue.prototype.$dayjs = dayjs
 Vue.prototype.$api = api
 Vue.prototype.$echarts = echarts
-
+Vue.use(mavonEditor)
 
 
 

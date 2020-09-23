@@ -48,4 +48,21 @@ export default {
     getallArticle() {
         return service.req(`/article/allArticle`)
     },
+    //发布文章
+    ReleaseallArticle({ title, abstract, author, category, source, star, text, date }) {
+        return service.req(`/article/create`, {
+            title,
+            abstract,
+            author,
+            category,
+            source,
+            star,
+            text,
+            date
+        })
+    },
+    //上传图片
+    upLoad() {
+        return service.req(`/upload`)
+    },
 }

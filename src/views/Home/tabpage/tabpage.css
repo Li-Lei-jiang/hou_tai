@@ -1,0 +1,21 @@
+.tabpag {
+    background: #FFF;
+    border-radius: 6px;
+}
+
+.tabpag .tabItem {
+    width: 98%;
+    margin: 0 auto;
+    border-bottom: 1px solid #cccccc;
+    height: 60px;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.noItem {
+    height: 60px;
+    line-height: 60px;
+    background: #FFF;
+    padding-left: 15px;
+}
