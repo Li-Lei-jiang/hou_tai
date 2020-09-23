@@ -6,6 +6,11 @@
       <el-upload
         class="upload-demo"
         drag
+        :headers="headers"
+        :on-preview="handlePreview"
+        :on-remove="handleRemove"
+        :file-list="fileList2" 
+        :on-success="onSuccess"
         action="http://localhost:3000/upload"
         multiple
       >
@@ -31,7 +36,7 @@
           langType="zh"
           :noRotate="false"
           field="Avatar1"
-          url="http://localhost:3000/upload"
+          url="http://localhost:3000"
         ></my-upload>
         <img :src="imgDataUrl" />
       </div>
@@ -42,17 +47,39 @@
 
 <script>
 import "babel-polyfill";
- import myUpload from 'vue-image-crop-upload';
+import myUpload from "vue-image-crop-upload";
 export default {
   data() {
     return {
       imgDataUrl: "",
       show: false,
+      headers:{
+        'Content-Type':'application/x-www-form-urlencoded'
+      },//上传头标
       size: 2.1,
+      fileList2:[],//上传的文件列表
     };
   },
   components: { "my-upload": myUpload },
   methods: {
+    /***饿了么ui */
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    //点击已上传的文件链接时的钩子,获取服务器返回的数据
+    handlePreview(file) {
+      console.log(file);
+    },
+     //文件上传成功时的钩子
+      onSuccess(response, file, fileList) {
+        console.log(response.data,file, fileList)    //服务器返回的图片信息，可以提交到表格
+        this.$message({
+          message: '图片上传成功',
+          type: 'success'
+        })
+        this.$refs.upload.clearFiles()//上传成功清除列表，否则每次上传都要删掉上次上传的列表
+      },
+    /***vue 插件 */
     toggleShow() {
       this.show = !this.show;
     },
