@@ -6,7 +6,6 @@
       <el-upload
         class="upload-demo"
         drag
-        :headers="headers"
         :on-preview="handlePreview"
         :on-remove="handleRemove"
         :file-list="fileList2" 
@@ -36,7 +35,7 @@
           langType="zh"
           :noRotate="false"
           field="Avatar1"
-          url="http://localhost:3000"
+          url="http://localhost:3000/upload"
         ></my-upload>
         <img :src="imgDataUrl" />
       </div>
@@ -53,9 +52,6 @@ export default {
     return {
       imgDataUrl: "",
       show: false,
-      headers:{
-        'Content-Type':'application/x-www-form-urlencoded'
-      },//上传头标
       size: 2.1,
       fileList2:[],//上传的文件列表
     };
